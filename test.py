@@ -21,7 +21,7 @@ class NewEndpointDownloader():
             self.status_code
             self.raw = resp.content
         except Exception:
-            print 'no connection'
+            print('no connection')
             self.status_code = '?'
             self.raw = ''
 
@@ -33,10 +33,10 @@ if __name__ == "__main__":
         t1 = time.time()
         dl.download()
         t2 = time.time()
-        print 'lookback'
-        print 'init took %d ms' % ((t1 - t0) * 1000.)
-        print 'download took %d ms' % ((t2 - t1) * 1000.)
-        print 'status code: ', dl.status_code
-        print 'got chars: ', len(dl.raw)
+        print('lookback')
+        print('init took %d ms' % ((t1 - t0) * 1000.))
+        print('download took %d ms' % ((t2 - t1) * 1000.))
+        print('status code: ', dl.status_code)
+        print('got chars: ', len(dl.raw))
 
 
