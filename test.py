@@ -1,17 +1,12 @@
-import requests
-import time
-import base64
+import base64, requests, time
 
 
-class NewEndpointDownloader():
+class Downloader():
     def __init__(self):
         self.status_code = "none"
-        self.session = self.make_session()
+        self.session =  requests.session()
         self.raw = ''
         self.rand_acct = 'N0tRS1NrdElnL2dCdE1JRGw3em5sUUN1alhnPQ=='
-
-    def make_session(self):
-        return requests.session()
 
     def download(self, lookback):
         url = "https://api.lendingclub.com/api/investor/v1/secondarymarket/listings?updatedSince=%d" % lookback
@@ -28,8 +23,8 @@ class NewEndpointDownloader():
 
 
 if __name__ == "__main__":
-    dl = NewEndpointDownloader()
-    for lookback in (60, 1, 1, 1, 1, 1):
+    dl = Downloader()
+    for lookback in (180, 60, 1, 1, 1, 1, 1):
         t0 = time.time()
         dl.download(lookback)
         t1 = time.time()
